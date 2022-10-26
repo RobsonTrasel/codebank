@@ -6,6 +6,12 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
+type TransactionRepository interface {
+	SaveTransaction(trasaction Transaction, creditCard CreditCard) error
+	GetCreditCard(creditCard CreditCard) (CreditCard, error)
+	CreateCreditCard(creditCard CreditCard) error
+}
+
 type Transaction struct {
 	ID           string
 	Amount       float64
